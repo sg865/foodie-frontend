@@ -1,0 +1,119 @@
+<!-- <div >
+  <button style="margin-top: 150px;margin-left: 40%;" class="btn btn-primary float-centre">Add Cuisines</button>
+</div> -->
+<section>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light container">
+    <a class="navbar-brand" href="#">Cart Items</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li *ngIf="show && islogged" class="nav-item active">
+          <a class="nav-link" routerLink="/addcuisine">Add Cuisines <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <div style="margin-right:500px;" class="form-inline my-2 my-lg-0">
+        <input type="text" placeholder="Search Restaurant" class="form-control" id="search" name="search"
+          [(ngModel)]="searchCuisine">
+
+      </div>
+
+
+    </div>
+  </nav>
+
+  <!-- <div *ngIf="show && islogged">
+    <button style="margin-top: 100px;" routerLink="/addcuisine" class="btn btn-primary float-right">Add Cuisines</button>
+  </div> -->
+
+  <div id="cards" class="shadow-lg p-3 card mb-3 col-lg-4"
+    *ngFor="let list of cuisineList | filter : searchCuisine | paginate : {itemsPerPage:4,currentPage:p};">
+    <img class="card-img-top" style="height:300px;width: 100%;" [src]="list.image" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title" style="font-size: larger;font-weight:bolder;">{{list.cuisineName}}</h5>
+
+      <h5 class="card-title"> Rs-{{list.price}}</h5>
+
+      <div id="abcd">
+
+        <div id="cart" *ngIf="!show && islogged">
+          <a (click)="addToCart(list)"><img style="height: 50px;width: 50px;border: solid rgb(224, 157, 157);"
+              src="assets/cart.png" alt="hi"></a>
+        </div>
+        <!-- <div class="space"></div> -->
+        <div style="margin-left: 100px;" *ngIf="!show && islogged">
+          <button (click)="addToFav(list)" mat-fab color="warn" aria-label="Example icon-button with a heart icon">
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </div>
+      </div>
+      <!-- <div *ngIf="!show && islogged">
+        <a  ><img style="height: 50px;width: 50px;border: solid rgb(224, 157, 157);" src="assets/heart logo.jpg" alt=""></a>
+      </div> -->
+
+
+
+
+      <div *ngIf="show && islogged">
+
+        <button mat-fab color="warn" (click)="deleteCuisine(list.cuisineId)"
+          aria-label="Example icon button with a delete icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+
+        <button style="margin-left:5%" mat-fab color="warn" (click)="dataCuisine(list)"
+          aria-label="Example icon button with a delete icon" data-toggle="modal" data-target="#exampleModal">
+          <mat-icon >edit</mat-icon>
+        </button>
+
+      </div>
+
+
+    </div>
+  </div>
+  <div class="container">
+    <pagination-controls (pageChange)="p =$event"></pagination-controls>
+  </div>
+  <!-- (click)="updateCuisine(list)" -->
+
+  <div style="margin-top: 13%;" class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update cuisine</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           <form >
+            <div>
+              <label for="cuisineName">cuisineName</label>
+               <input type="text " #cuisinename [(ngModel)]="updateInfo.cuisineName" name="cuisineName" >
+            </div>
+            <div>
+              <label for="price">price</label>
+               <input type="text " #price [(ngModel)]="updateInfo.price" name="price" >
+            </div>
+            <div>
+               <button class="btn btn-primary" (click)="updateCuisine()" data-dismiss="modal">update</button>
+            </div>
+
+                 
+           </form>
+          
+          
+        </div>
+        <!-- <div class="modal-footer"> -->
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="updateCuisine()">Save changes</button> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</section>

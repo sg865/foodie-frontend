@@ -1,0 +1,123 @@
+<!-- <section>
+   
+<div id="cards" class="shadow-lg card mb-3 col-lg-9" *ngFor="let list of cuisineList">
+  <div class="card-body ">
+    
+      <ul id="button">
+        <li>
+          <img class="card-img-top" style="height:300px;width: 60%;" [src]="list.image" alt="Card image cap">
+        
+          <h5 class="card-title"style="font-size: larger;font-weight:bolder;"> {{list.cuisineName}}</h5>
+          <h5 class="card-title"> {{totalPrice}}</h5>
+          
+        </li>
+        <div class="space"></div>
+        <li>
+          <ng-template #qty><b>Qty :</b> </ng-template>
+          <select id="drop" #itemQuantity (change)="onShowLog(itemQuantity.value,list.price)">
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+         </select>
+        </li>        
+     <div class="space"></div>
+    
+       
+        <li><a  (click)="deleteCuisine(list.cuisineId)"><img style="height: 38px;width: 40px;border: solid rgb(77, 121, 203); margin-left: 45%;" src="assets/delete.png" alt=""></a></li>
+        <div class="space"></div>
+        <li><button class="btn btn-primary"  (click)="order(list)">order</button></li>
+      </ul> 
+      
+    </div>
+    <div>
+      
+    </div>
+    
+    
+
+  </div>
+</section> -->
+
+
+<!-- (change)="onShowLog(itemQuantity.value) -->
+
+<section class="h-100 h-custom" style="background-color: #eee;">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card shopping-cart" style="border-radius: 15px;">
+          <div class="card-body text-black">
+
+            <div class="row">
+              <div class="col-lg-6 px-5 py-4">
+
+                <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your Cart</h3>
+                <div *ngFor="let list of cuisineList" class="d-flex align-items-center mb-5">
+                  <div class="flex-shrink-0">
+                    <img [src]="list.image"
+                      class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    
+                    <h5 class="text-primary" style="font-size:x-large;">{{list.cuisineName}}</h5>
+                  
+                    <div class="d-flex align-items-center">
+                      <p class="fw-bold mb-0 me-5 pe-3">price : {{list.price}} rs</p>
+                    </div>
+                    <br>
+                      <div class="d-flex align-items-center">
+                        <label for="quantity fw-bold text-black">quantity : </label>
+                        <input #quantity class="quantity fw-bold text-black" min="0" name="quantity" value="1"
+                        (change)="onShowLog(quantity.value,list.price)" type="number">
+                        <button class="btn btn-primary"  (click)="email(list)">order</button>
+                        <!-- <form [formGroup]="shareForm">
+                          <mat-card style="margin-left: -8rem">
+                            <mat-label>Enter Email</mat-label>
+                            <mat-form-field class="cardcontent" appearance="fill">
+                              <input
+                                matInput
+                                placeholder="Enter Email"
+                                formControlName="shareEmail"
+                                type="text"
+                              />
+                            </mat-form-field>
+                            <button
+                              class="btn btn-outline-primary"
+                              (click)="email(this.list)"
+                            >
+                              Share
+                            </button>
+                          </mat-card>
+                        </form> -->
+              
+            
+                      </div>                   
+                          
+                      
+                     
+                    
+                  </div>
+                </div>
+
+                <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
+
+            
+                <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
+                  <h5 class="fw-bold mb-0">Total:</h5>
+                  <h5 class="fw-bold mb-0">{{totalPrice}}</h5>
+                  
+                </div>
+               
+
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

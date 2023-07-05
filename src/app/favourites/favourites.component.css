@@ -1,0 +1,23 @@
+#cards{
+    border: solid rgb(235, 218, 218) ;
+
+    margin-top: 30px;
+    display: inline-block;
+    margin: 30px;
+    
+  }
+  #cards:hover{
+    cursor: pointer;
+  }
+  section{
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+#button{
+    list-style: none;
+}
+#button li{
+    display: inline-block;
+}
+
+

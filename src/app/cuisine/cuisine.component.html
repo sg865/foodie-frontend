@@ -1,0 +1,73 @@
+<p>cuisine works!</p>
+
+<section class="vh-100" >
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-9">
+
+                <h1 class="text-black mb-4">Add Cuisine To Restaurant</h1>
+                <form [formGroup]="cuisineFormGroup">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body">
+
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+
+                                <h3 class="mb-0">Cuisine Name</h3>
+
+                            </div>
+                            <div class="col-md-9 pe-5">
+
+                                <input type="text" class="form-control form-control-lg" placeholder="Enter Cuisine Name" formControlName="cuisineName" />
+
+                            </div>
+                        </div>
+
+                       
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+
+                                <h3 class="mb-0">Price</h3>
+
+                            </div>
+                            <div class="col-md-9 pe-5">
+
+                                <input type="price" class="form-control" rows="3" placeholder="Enter Cuisine Price" formControlName="price"/>
+                                <div  *ngIf="price.errors?.['pattern']" class="alert alert-danger">
+                                    Price cannot be negative
+                              </div>
+                            </div>
+                        </div>
+                        
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+
+                                <h3 class="mb-0">Upload Cuisine Image</h3>
+
+                            </div>
+                            <div class="col-md-9 pe-5">
+
+                                <input class="form-control form-control-lg" id="formFileLg" type="file" (change)="imgSave($event)"/>
+                                <div class="small text-muted mt-2">Upload Cuisine Image.
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="px-5 py-4">
+                            <button type="submit"  class="btn btn-primary btn-lg" (click)="addCuisineToRestaurant()">Add Cuisine</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,98 @@
+<section class="vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-9">
+
+                <h1 class="text-primary mb-4">Add Restaurant</h1>
+                <form [formGroup]="restaurantFormGroup">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body">
+
+                            
+
+                            <hr class="mx-n3">
+
+                            <div class="row align-items-center py-3">
+                                <div class="col-md-3 ps-5">
+
+                                    <h3 class="mb-0">Restaurant Name</h3>
+
+                                </div>
+                                <div class="col-md-9 pe-5">
+
+                                    <input class="form-control form-control-lg" placeholder="Enter Restaurant Name"
+                                        formControlName="restaurantName" />
+
+                                </div>
+                            </div>
+
+                            <hr class="mx-n3">
+
+                            <div class="row align-items-center py-3">
+                                <div class="col-md-3 ps-5">
+
+                                    <h3 class="mb-0">Restaurant Address</h3>
+
+                                </div>
+                                <div class="col-md-9 pe-5">
+
+                                    <input type="Address" class="form-control" rows="3"
+                                        placeholder="Enter Restaurant Address" formControlName="address" />
+
+                                </div>
+                            </div>
+                            <hr class="mx-n3">
+                            <div class="row align-items-center pt-4 pb-3">
+                                <div class="col-md-3 ps-5">
+
+                                    <h3 class="mb-0">City</h3>
+
+                                </div>
+
+                                <div class="col-md-9 pe-5">
+
+                                    <select class="form-control" name="city" formControlName="city"  id="exampleFormControlSelect1">
+
+                                        <option>New Delhi</option>
+                                        <option>Mumbai</option>
+                                        <option>Banglore</option>
+                                        <option>Moradabad</option>
+                                        <option>Meerut</option>
+                                        <option>Kolkata</option>
+                                      </select>
+                                </div>
+                            </div>
+                            <hr class="mx-n3">
+
+                            <div class="row align-items-center py-3">
+                                <div class="col-md-3 ps-5">
+
+                                    <h3 class="mb-0">Upload Profile Picture</h3>
+
+                                </div>
+                                <div class="col-md-9 pe-5">
+
+                                    <input class="form-control form-control-lg" id="formFileLg" type="file"
+                                        formControleName="image" (change)="imgSave($event)" />
+                                    <div class="small text-muted mt-2">Upload your Profile picture.
+                            </div>
+
+                                </div>
+                            </div>
+
+                            <hr class="mx-n3">
+
+                            <div class="px-5 py-4">
+                                <button type="submit"  class="btn btn-primary btn-lg" (click)=" addRestaurant()">Add
+                                    Restaurant</button>
+                                <hr>
+                                <!-- <button type="submit" class="btn btn-primary btn-lg" routerLink="/addcuisine">Add Cuisine To The Restaurant</button> -->
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

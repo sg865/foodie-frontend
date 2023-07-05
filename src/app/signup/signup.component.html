@@ -1,0 +1,228 @@
+<section class="vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-9">
+
+                <h1 class="text-primary mb-4">SignUp</h1>
+                <form [formGroup]="form">
+
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body">
+
+                            <div class="row align-items-center pt-4 pb-3">
+                                <div class="col-md-3 ps-5">
+
+                                    <h3 class="mb-0">Full name</h3>
+
+                                </div>
+                                <div class="col-md-9 pe-5">
+
+                                    <input type="text" class="form-control form-control-lg"
+                                        placeholder="Enter Full Name Here" formControlName="userName" />
+
+                                        <div *ngIf="userName.errors?.['required']" class="alert alert-danger">
+                                          field must not be empty
+                                    </div> 
+
+                                </div>
+                            </div>
+
+                            <hr class="mx-n3">
+
+                            <div class="row align-items-center py-3">
+                                <div class="col-md-3 ps-5">
+
+                                    <h3 class="mb-0">Email address</h3>
+
+                                </div>
+                                <div class="col-md-9 pe-5">
+
+                                    <input type="email" class="form-control form-control-lg"
+                                        placeholder="example@example.com" formControlName="emailId"  required (keyup)="onEmailChanged($event)"/>
+                                        
+                                        <div  *ngIf="emailId.errors?.['pattern']" class="alert alert-danger">
+                                           Email not valid.
+                                     </div>
+                                     <div  *ngIf="emailId.errors?.['required']" class="alert alert-danger">
+                                      field must not be empty
+                                </div> 
+
+                                </div>
+                            </div>
+
+                            <hr class="mx-n3">
+
+                            <div class="row align-items-center py-3">
+                                <div class="col-md-3 ps-5">
+
+                                    <h3 class="mb-0">Password</h3>
+
+                                </div>
+                                <div class="col-md-9 pe-5">
+
+                                    <input type="password" class="form-control" rows="3"
+                                        placeholder="Enter Password Here" formControlName="password" />
+                                        <div *ngIf="password.errors?.['minlength']" class="alert alert-danger">
+                                          required at least 5 charachters
+                                    </div> 
+
+                                </div>
+                            </div>
+                            <hr class="mx-n3">
+                            <div class="row align-items-center pt-4 pb-3">
+                                <div class="col-md-3 ps-5">
+
+                                    <h3 class="mb-0">Mobile No</h3>
+
+                                </div>
+
+                                <div class="col-md-9 pe-5">
+
+                                    <input type="text" class="form-control form-control-lg"
+                                        placeholder="Enter Mobile No Here" formControlName="mobileNo" />
+                                        <div *ngIf="mobileNo.errors?.['pattern']" class="alert alert-danger">
+                                          It must be a number
+                                    </div> 
+
+                                </div>
+                            </div>
+                            
+
+                          
+                            <div class="row align-items-center pt-4 pb-3">
+                                <div class="col-md-3 ps-5">
+
+                                    <h3 class="mb-0">City</h3>
+
+                                </div>
+                                <div class="col-md-9 pe-5">
+
+                                  <select class="form-control" name="city" formControlName="city"  id="exampleFormControlSelect1">
+
+                                    <option>New Delhi</option>
+                                    <option>Mumbai</option>
+                                    <option>Banglore</option>
+                                    <option>Moradabad</option>
+                                    <option>Meerut</option>
+                                    <option>Kolkata</option>
+                                  </select>
+                                </div>
+                            </div>
+
+
+
+                            
+
+                            <div class="row align-items-center py-3">
+                                <div class="col-md-3 ps-5">
+
+                                    <h3 class="mb-0">Upload Profile Picture</h3>
+
+                                </div>
+                                <div class="col-md-9 pe-5">
+
+                                    <input class="form-control form-control-lg" id="formFileLg" type="file" (change)="imgSave($event)" formControlName="image"/>
+                                    <div class="small text-muted mt-2">Upload your Profile picture.
+                                        
+                                        </div>
+
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="px-5 py-4">
+                                <button type="submit"  class="btn btn-primary btn-lg"
+                                    (click)="submit()">Register</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+  <!-- <div class="container">
+    <h1>REGISTRATION FORM</h1>
+
+<div>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label for="emailId">Email ID</label>
+  <input type="text" formControlName="emailId">
+  <div *ngIf="emailId.invalid && emailId.touched" class="alert alert-danger">
+    <div *ngIf="emailId.errors?.['required']">
+      Email Id is must
+    </div>
+    <div *ngIf="emailId.errors?.['pattern']">
+      Email Id is not Valid
+    </div>
+  </div>
+
+
+  <label for="username">User Name</label>
+  <input type="text" formControlName="username">
+  <div *ngIf="username.invalid && username.touched" class="alert aler-danger">
+    <div *ngIf="username.errors?.['required']" >
+      User Name is must
+    </div>
+    <div *ngIf="username.errors?.['pattern']" >
+      User Name must contain only 20 letters
+    </div>
+  </div>
+
+
+  <label for="password">Password</label>
+  <br>
+  <input type="password" formControlName="password" id="myInput" style="height:45px; width:100%"> &nbsp; &nbsp;<br>
+  <input type="checkbox" onclick="myFunction1()">&nbsp; &nbsp;Show Password
+  <div *ngIf="password.invalid && password.touched" class="alert alert-danger">
+    <div *ngIf="password.errors?.['required']" >
+      password is must
+    </div>
+    <div *ngIf="password.errors?.['minlength']" >
+      password must contain min 6 characters
+    </div>
+    <div *ngIf="password.errors?.['maxlength']">
+      password should not exceed 12 characters
+
+    </div>
+    <div *ngIf="emailId.errors?.['pattern']">
+      Password is not Valid
+    </div>
+  </div>
+  <br>
+  <br>
+
+ 
+
+
+  <label for="city">city</label>
+  <input type="text" formControlName="city">
+  <div *ngIf="city.invalid && city.touched" class="alert alert-danger">
+    <div *ngIf="city.errors?.['required']" >
+      city is must
+    </div>
+    <div *ngIf="city.errors?.['minlength']" >
+      city is not valid
+    </div>
+  </div>
+
+
+
+  <button [disabled]="form.invalid" type="submit" class="btn btn-danger">Register</button>
+  <br>
+  <br>
+
+  Already existing user click <a routerLink="/login">here</a> for login!
+
+</form>
+</div>
+
+
+  </div> -->
+
+

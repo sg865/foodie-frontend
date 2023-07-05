@@ -1,0 +1,27 @@
+<img style="size: 100px;" [src]="userImage" alt="">
+<body>
+ 
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="assets/logo.png" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="form" >
+      <input type="text" matInput id="login" class="fadeIn second" name="login" placeholder="Email" formControlName="emailId">
+      <input type="password" matInput id="password" class="fadeIn third" name="login" placeholder="Password" formControlName="password">
+      <input type="submit"  class="fadeIn fourth" value="Log In" (click)="submit()">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <!-- <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div> -->
+
+  </div>
+</div>
+</body>
